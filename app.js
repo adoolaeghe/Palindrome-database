@@ -15,9 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var palindromes = [];
 var timer = 600 * 1000;
 
+
 function palindromeChecker(string) {
-  for(x=0;x< (string.length)/2 ; x++) {
-    if(string[x] != string.slice(-1-x)[0]){
+  palindromeString = string.toLowerCase().replace(/[^a-zA-Z0-9]+/g,'');
+  for(x=0;x< (palindromeString.length)/2 ; x++) {
+    if(palindromeString[x] != palindromeString.slice(-1-x)[0]){
       return false;
     }
   }
@@ -26,7 +28,8 @@ function palindromeChecker(string) {
 
 function addPalindrome(string) {
   if (palindromes.length < 10){
-    palindromes.push({q: string, pid: setTimeout(() => palindromes.shift(), time)})
+    palindromes.push({palindrome: string, timer: setTimeout(function() {palindromes.splice(0)}, time)
+  });
   }
 }
 
@@ -44,8 +47,5 @@ app.post('/palindromes', function (req, res) {
   }
   res.redirect('/palindromes');
 });
-
-
-
 
 module.exports = app;
