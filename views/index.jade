@@ -1,10 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Palindromes Database
   form(method='post', action='/palindromes')
-    input(id='palindrome',type='text',value='',placeholder='@', name='name')
-    input(type='submit',value='submit',data-transition='fade', data-theme='c')
+    input(id='palindrome',type='text',value='',placeholder='It should read the same backward as forward.', name='name')
+    input(type='submit',value='Add palindrome',data-transition='fade', data-theme='c')
   form(method='get',action='/palindromes') 
-    input(type='submit',value='submit',data-transition='fade', data-theme='c')
+    input(type='submit',value='All palindromes',data-transition='fade', data-theme='c')

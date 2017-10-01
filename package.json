@@ -25,6 +25,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "jest": "^21.2.1",
+    "mocha-clean": "^1.0.0",
     "superagent": "^3.6.1",
     "supertest": "^3.0.0"
   }
