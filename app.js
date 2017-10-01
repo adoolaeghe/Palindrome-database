@@ -22,9 +22,13 @@ var timer = 600 * 1000;
 console.log(isNotEmpty('string'))
 console.log(Palindromes.collection);
 
+app.get('/', function (req, res) {
+  res.render('index');
+});
+
 app.get('/palindromes', function (req, res) {
   console.log('here');
-  res.render('index');
+  res.render('palindromes', { history: palindromes});
 });
 
 app.post('/palindromes', function (req, res) {
