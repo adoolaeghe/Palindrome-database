@@ -44,8 +44,10 @@ app.post('/palindromes', function (req, res) {
   console.log(palindromes.length);
   if (palindromeChecker(string)) {
     addPalindrome(string);
+    res.redirect('/palindromes');
+  } else {
+    res.sendStatus(400);
   }
-  res.redirect('/palindromes');
 });
 
 module.exports = app;
