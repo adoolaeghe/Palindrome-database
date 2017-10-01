@@ -28,7 +28,7 @@ function palindromeChecker(string) {
 
 function addPalindrome(string) {
   if (palindromes.length < 10){
-    palindromes.push({palindrome: string, timer: setTimeout(function() {palindromes.splice(0)}, time)
+    palindromes.push({palindrome: string, timer: setTimeout(function() {palindromes.splice(0)}, timer)
   });
   }
 }
