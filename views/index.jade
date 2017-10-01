@@ -3,3 +3,6 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  form(method='post', action='/palindromes')
+    input(id='palindrome',type='text',value='',placeholder='@', name='name')
+    input(type='submit',value='submit',data-transition='fade', data-theme='c') 
