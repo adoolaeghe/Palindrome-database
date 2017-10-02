@@ -4,6 +4,6 @@ block content
   h1 Palindromes Database
   form(method='post', action='/palindromes')
     input(id='palindrome',type='text',value='',placeholder='It should read the same backward as forward.', name='name')
-    input(type='submit',value='Add palindrome',data-transition='fade', data-theme='c')
+    input(type='submit',value='Add palindrome',data-transition='fade', name='submit')
   form(method='get',action='/palindromes') 
     input(type='submit',value='All palindromes',data-transition='fade', data-theme='c')

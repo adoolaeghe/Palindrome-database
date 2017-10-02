@@ -1,6 +1,7 @@
 var expect  = require('chai').expect;
 var request = require('supertest');
-var app = require('../app');
+var app = require('../../app');
+var sleepfor = require('sleepfor');
 var validPalindrome = 'Dennis, Nell, Edna, Leon, Nedra, Anita,' +
                       'Rolf, Nora, Alice, Carol, Leo, Jane, Reed,' +
                       'Dena, Dale, Basil, Rae, Penny, Lana, Dave, ' +
@@ -35,7 +36,9 @@ describe('Test POST route', function() {
   });
 
   it('should respond 400 when posting an unvalid palindrome', function (done) {
-    request(app).post('/palindromes').type(unvalidPalindrome).expect(400);
+    request(app).post('/palindromes').type(unvalidPalindrome).expect(400,done).end(function(err, res) {
+      done();
+    });
   });
 
   it('should respond 400 when posting an empty string', function (done) {
@@ -48,26 +51,5 @@ describe('Test POST route', function() {
     setTimeout(function () {
       request(app).get('/palindromes').expect([], done);
     }, 400);
-  });
-});
-
-
-describe("capacity", function(){
-  var foo = false;
-  beforeEach(function(done){
-    var promise = new WinJS.Promise(function(complete){
-      complete(true);
-    });
-    promise.then(function(value){
-      // get the value from the completed promise
-      foo = value;
-      // complete the async beforeEach
-      done();
-    });
-
-  });
-
-  it("should pass", function(){
-    expect(foo).equals(true);
   });
 });
